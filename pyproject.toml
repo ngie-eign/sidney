@@ -1,0 +1,81 @@
+[project]
+name = "sidney"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-2-Clause"}
+keywords = ["git", "github"]
+authors = [
+    {name = "Enji Cooper", email = "yaneurabeya@gmail.com"}
+]
+maintainers = [
+    {name = "Enji Cooper", email = "yaneurabeya@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "GitPython>=3.1.48",
+    "requests~=2.34.0"
+]
+
+[project.scripts]
+sid = "sid.__main__:main"
+sidney = "sid.__main__:main"
+
+[project.urls]
+"Homepage" = "https://codeberg.org/ngie/sidney"
+"Bug Reports" = "https://github.com/ngie/sidney/issues"
+"Source" = "https://github.com/ngie/sidney"
+
+[tool.setuptools.dynamic]
+version = {"attr" = "sid.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+exclude = [
+    "build",
+    "dist"
+]
+lint.select = [
+    "ANN",
+    "B",
+    "D",
+    "E",
+    "F",
+    "I",
+    "PERF",
+    "PLW",
+    "PYI",
+    "RUF",
+    "S",
+    "W"
+]
+lint.ignore = [
+    "D107",  # Document __init__ nags.
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src/"}
